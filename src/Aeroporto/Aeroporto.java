@@ -2,6 +2,7 @@ package Aeroporto;
 
 import ListaDuplaDesordenadaSemRepeticao.ListaDuplaDesordenadaSemRepeticao;
 import ListaDuplamenteLigadaDesordenada.ListaDuplamenteLigadaDesordenada;
+import Voo.Voo;
 
 public class Aeroporto implements Cloneable{
     protected String codigo;
