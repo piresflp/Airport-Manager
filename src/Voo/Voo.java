@@ -2,7 +2,7 @@ package Voo;
 
 import java.util.Objects;
 
-//import Aeroporto.Aeroporto;
+import Aeroporto.Aeroporto;
 public class Voo {
     private int codVoo;
     private int codProximoAeroporto;
@@ -19,9 +19,9 @@ public class Voo {
     }
 
     public void setCodProximoAeroporto(int codProximoAeroporto) throws Exception{
-        /*if (Aeroporto.existe(codProximoAeroporto))
+        if (Aeroporto.voos.existe(codProximoAeroporto))
             throw new Exception("código de aeroporto inexistente");
-         */
+
         this.codProximoAeroporto = codProximoAeroporto;
     }
 
