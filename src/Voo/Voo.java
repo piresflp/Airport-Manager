@@ -3,6 +3,7 @@ package Voo;
 import java.util.Objects;
 import Aeroporto.Aeroporto;
 
+
 public class Voo implements Cloneable{
     private int codVoo;
     private String codAeroportoDestino;
@@ -18,15 +19,12 @@ public class Voo implements Cloneable{
         }
     }
 
-    public void setCodAeroportoDestino(String codAeroportoDestino) throws Exception{
-        /*if (Aeroporto.existe(codProximoAeroporto))
-            throw new Exception("código de aeroporto inexistente");
-         */
+    public void setCodAeroportoDestino(String codAeroportoDestino) throws Exception{        
         this.codAeroportoDestino = codAeroportoDestino;
     }
 
     public void setCodVoo(int codVoo) throws Exception{
-        if (codVoo < 0)
+        if (codVoo <= 0)
             throw new Exception("Valor de código de voo inválido.");
         this.codVoo = codVoo;
     }
