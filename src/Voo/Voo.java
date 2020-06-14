@@ -1,15 +1,15 @@
 package Voo;
 
 import java.util.Objects;
+import Aeroporto.Aeroporto;
 
-//import Aeroporto.Aeroporto;
-public class Voo {
+public class Voo implements Cloneable{
     private int codVoo;
-    private int codProximoAeroporto;
+    private String codAeroportoDestino;
 
-    public Voo (int codVoo, int codProximoAeroporto) throws Exception{
+    public Voo (int codVoo, String codAeroportoDestino) throws Exception{
         try {
-            setCodProximoAeroporto(codProximoAeroporto);
+            setCodAeroportoDestino(codAeroportoDestino);
             setCodVoo(codVoo);
         }
         catch (Exception e)
@@ -18,48 +18,77 @@ public class Voo {
         }
     }
 
-    public void setCodProximoAeroporto(int codProximoAeroporto) throws Exception{
+    public void setCodAeroportoDestino(String codAeroportoDestino) throws Exception{
         /*if (Aeroporto.existe(codProximoAeroporto))
             throw new Exception("código de aeroporto inexistente");
          */
-        this.codProximoAeroporto = codProximoAeroporto;
+        this.codAeroportoDestino = codAeroportoDestino;
     }
 
     public void setCodVoo(int codVoo) throws Exception{
         if (codVoo < 0)
-            throw new Exception("valor negativo pra voo");
+            throw new Exception("Valor de código de voo inválido.");
         this.codVoo = codVoo;
     }
 
-    public int getCodProximoAeroporto() {
-        return codProximoAeroporto;
+    public int getCodVoo() {
+        return this.codVoo;
     }
 
-    public int getCodVoo() {
-        return codVoo;
+    public String getCodAeroportoDestino() {
+        return this.codAeroportoDestino;
     }
 
     @Override
     public String toString() {
-        return "Voo{" +
-                "codVoo=" + codVoo +
-                ", codProximoAeroporto=" + codProximoAeroporto +
-                '}';
+        String ret = "Voo "+this.codVoo+":";
+        ret += "\n Código do aeroporto de destino: "+this.codAeroportoDestino;
+        return ret;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Voo))
+    public boolean equals(Object obj) {
+        if(obj == null)
             return false;
-        Voo voo = (Voo) o;
-        return codVoo == voo.codVoo &&
-                codProximoAeroporto == voo.codProximoAeroporto;
+        if(obj.getClass() != this.getClass())
+            return false;
+        if(this == obj)
+            return true;
+
+        Voo voo = (Voo) obj;
+
+        if(this.codVoo != voo.codVoo)
+            return false;
+        if(!this.codAeroportoDestino.equals(voo.codAeroportoDestino))
+            return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codVoo, codProximoAeroporto);
+        int ret = 23;
+        ret = ret * 7 + this.codVoo;
+        ret = ret * 7 + this.codAeroportoDestino.hashCode();
+
+        if(ret < 0)
+            ret = -ret;
+
+        return ret;
+    }
+
+    public Voo(Voo modelo) throws Exception{
+        if(modelo == null)
+            throw new Exception("Modelo nulo.");
+        this.codVoo = modelo.codVoo;
+        this.codAeroportoDestino = modelo.codAeroportoDestino;
+    }
+
+    public Object clone(Voo modelo){
+        Voo ret = null;
+        try{
+            ret = new Voo(this);
+        }catch (Exception e){}
+        return ret;
     }
 }

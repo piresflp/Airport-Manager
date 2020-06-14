@@ -1,18 +1,18 @@
 package Aeroporto;
 
-import ListaDuplaDesordenadaSemRepeticao.ListaDuplaDesordenadaSemRepeticao;
+import ListaDuplamenteLigadaDesordenadaSemRepeticao.ListaDuplamenteLigadaDesordenadaSemRepeticao;
 import ListaDuplamenteLigadaDesordenada.ListaDuplamenteLigadaDesordenada;
 import Voo.Voo;
 
 public class Aeroporto implements Cloneable{
     protected String codigo;
     protected String cidade;
-    protected ListaDuplamenteLigadaDesordenada<Voo> voos;
+    protected ListaDuplamenteLigadaDesordenadaSemRepeticao<Voo> voos;
 
     public Aeroporto(String codigo, String cidade) throws Exception{
         this.setCodigo(codigo);
         this.setCidade(cidade);
-        voos = new ListaDuplamenteLigadaDesordenada<Voo>();
+        voos = new ListaDuplamenteLigadaDesordenadaSemRepeticao<Voo>();
     }
 
     public void adicionarVoo(Voo voo) throws Exception{
@@ -21,11 +21,11 @@ public class Aeroporto implements Cloneable{
         voos.insiraNoFim(voo);
     }
 
-    public void removerVoo(int numeroVoo) throws Exception{
-        if(numeroVoo < 0)
+    public void removerVoo(int codVoo) throws Exception{
+        if(codVoo < 0)
             throw new Exception("Voo inválido.");
 
-        Voo vooARemover = new Voo("xxx", numeroVoo);
+        Voo vooARemover = new Voo(codVoo, "XXX");
         if(!this.voos.existe(vooARemover))
             throw new Exception("Voo inexistente.");
         this.voos.remova(vooARemover);
@@ -59,6 +59,7 @@ public class Aeroporto implements Cloneable{
         this.cidade = cidade;
     }
 
+    @Override
     public String toString(){
         String ret = "Aeroporto de "+this.cidade+":";
         ret += "\n Código: "+this.codigo;
@@ -67,6 +68,7 @@ public class Aeroporto implements Cloneable{
         return ret;
     }
 
+    @Override
     public int hashCode(){
         int ret = 23;
         ret = ret * 7 + this.codigo.hashCode();
@@ -79,6 +81,7 @@ public class Aeroporto implements Cloneable{
         return ret;
     }
 
+    @Override
     public boolean equals(Object obj){
         if (obj == null)
             return false;
