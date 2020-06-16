@@ -18,7 +18,13 @@ public class Aeroporto implements Cloneable{
     public void adicionarVoo(Voo voo) throws Exception{
         if(voo == null)
             throw new Exception("Voo inválido.");
-        voos.insiraNoFim(voo);
+        if (voos.isVazia()) {
+            //System.out.println(voo);
+            voos.insiraNoInicio(voo);
+            //System.out.println(voos);
+        }
+        else
+            voos.insiraNoFim(voo);
     }
 
     public void removerVoo(int codVoo) throws Exception{

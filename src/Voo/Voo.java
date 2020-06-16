@@ -19,7 +19,9 @@ public class Voo implements Cloneable{
         }
     }
 
-    public void setCodAeroportoDestino(String codAeroportoDestino) throws Exception{        
+    public void setCodAeroportoDestino(String codAeroportoDestino) throws Exception{
+        if (codAeroportoDestino == null)
+            throw new Exception("Codigo de Aeroporto nulo");
         this.codAeroportoDestino = codAeroportoDestino;
     }
 
@@ -82,11 +84,12 @@ public class Voo implements Cloneable{
         this.codAeroportoDestino = modelo.codAeroportoDestino;
     }
 
-    public Object clone(Voo modelo){
+    public Object clone(){
         Voo ret = null;
         try{
             ret = new Voo(this);
-        }catch (Exception e){}
+        }
+        catch (Exception e) {}
         return ret;
     }
 }

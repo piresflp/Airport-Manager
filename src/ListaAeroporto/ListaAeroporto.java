@@ -1,6 +1,7 @@
 package ListaAeroporto;
 import Aeroporto.Aeroporto;
 import ListaDuplamenteLigadaDesordenadaSemRepeticao.ListaDuplamenteLigadaDesordenadaSemRepeticao;
+import Voo.Voo;
 
 public class ListaAeroporto  extends ListaDuplamenteLigadaDesordenadaSemRepeticao<Aeroporto>{
 
@@ -16,7 +17,7 @@ public class ListaAeroporto  extends ListaDuplamenteLigadaDesordenadaSemRepetica
 
         while (aeroportoAtual!=null)
         {
-            if (codAeroporto == aeroportoAtual.getInfo().getCodigo())
+            if (codAeroporto.equals(aeroportoAtual.getInfo().getCodigo()))
                 return true;
 
             aeroportoAtual = aeroportoAtual.getProx();
@@ -30,7 +31,24 @@ public class ListaAeroporto  extends ListaDuplamenteLigadaDesordenadaSemRepetica
             throw new Exception("aeroporto nulo");
         if (super.isVazia())
             super.insiraNoInicio(aeroporto);
-        super.insiraNoFim(aeroporto);
+        else
+            super.insiraNoFim(aeroporto);
+    }
+
+    public void addVoo(String codEmbarque, String codDesembarque, int codVôo) throws Exception{
+        if (existe(codDesembarque) == false || existe(codEmbarque) == false)
+            throw new Exception("Aeroportos não existentes");
+        Voo novoVoo = new Voo(codVôo, codDesembarque);
+        No aeroportoAtual=this.primeiro;
+
+        while (aeroportoAtual!=null)
+        {
+            if (codEmbarque.equals(aeroportoAtual.getInfo().getCodigo())) {
+                aeroportoAtual.getInfo().adicionarVoo(novoVoo);
+                break;
+            }
+            aeroportoAtual = aeroportoAtual.getProx();
+        }
     }
 
     @Override

@@ -92,10 +92,9 @@ public class ListaDuplamenteLigadaDesordenada<X>
 
         X inserir=null;
         if (i instanceof Cloneable)
-            inserir = meuCloneDeX (i);
+            inserir = meuCloneDeX(i);
         else
             inserir = i;
-
         this.primeiro = new No (null,inserir,this.primeiro);
 
         if (this.primeiro.getProx()!=null)
