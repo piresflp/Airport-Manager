@@ -35,7 +35,7 @@ public class ListaAeroporto  extends ListaDuplamenteLigadaDesordenadaSemRepetica
             super.insiraNoFim(aeroporto);
     }
 
-    public void addVoo(String codEmbarque, String codDesembarque, int codVoo) throws Exception{
+    public void addVoo(String codEmbarque, String codDesembarque, String codVoo) throws Exception{
         if (existe(codDesembarque) == false || existe(codEmbarque) == false)
             throw new Exception("Aeroportos não existentes");
         Voo novoVoo = new Voo(codVoo, codDesembarque);
@@ -51,12 +51,12 @@ public class ListaAeroporto  extends ListaDuplamenteLigadaDesordenadaSemRepetica
         }
     }
 
-    public void removerVoo(int codVoo) throws Exception{
+    public void removerVoo(String codVoo) throws Exception{
         No atual = super.primeiro;
         while (atual != null)
         {
             ListaDuplamenteLigadaDesordenadaSemRepeticao<Voo> listaVoos = atual.getInfo().getVoos();
-            if(listaVoos.existe(new Voo(codVoo, "XXX")))
+            if(listaVoos.existe(new Voo(codVoo, "foo")))
                 break;
             atual = atual.getProx();
         }

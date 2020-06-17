@@ -8,11 +8,11 @@ public class Main {
         int opcao;
         int resposta;
         final int fecharPrograma = 99;
+        ListaAeroporto listaDeAeroporto = new ListaAeroporto();
 
         do{
             limpaTela();
             Scanner ler = new Scanner(System.in);
-            ListaAeroporto listaDeAeroporto = new ListaAeroporto();
 
             System.out.println("Estrutura de gerenciamento de voos e aeroportos da ANAC\n");
             System.out.println("1: Cadastramento de um novo aeroporto");
@@ -28,20 +28,20 @@ public class Main {
                     do {
                         limpaTela();
                         try {
-                            System.out.printf("Digite: [codigo] [nome cidade]: ");
+                            System.out.println("Digite: [codigo] [nome cidade]: ");
                             String cod = ler.next();
-                            String cidade = ler.next();
+                            String cidade = ler.nextLine();
                             Aeroporto novoAeroporto = new Aeroporto(cod, cidade);
                             listaDeAeroporto.addAeroporto(novoAeroporto);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
                         do {
+                            Scanner repeticao = new Scanner(System.in);
                             System.out.println("Deseja repetir a operação?");
                             System.out.println("Não - 0");
                             System.out.println("Sim - 1");
-                            resposta = ler.nextInt();
+                            resposta = repeticao.nextInt();
                         }
                         while (resposta != 0 && resposta != 1);
                     }
@@ -53,25 +53,20 @@ public class Main {
                     do{
                         limpaTela();
                         try {
-                            Aeroporto novoAeroporto = new Aeroporto("GRU", "sao paulo");
-                            listaDeAeroporto.addAeroporto(novoAeroporto);
-                            Aeroporto novoAeroporto2 = new Aeroporto("BSB", "Brasilia");
-                            listaDeAeroporto.addAeroporto(novoAeroporto2);
-
-
                             System.out.printf("Digite: [codigoAeroportoEmbarque] [codAeroportoDesembarque] [codVôo]: ");
                             String codEmbarque = ler.next();
                             String codDesembarque = ler.next();
-                            int codVoo = ler.nextInt();
+                            String codVoo = ler.next();
                             listaDeAeroporto.addVoo(codEmbarque, codDesembarque, codVoo);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                         do {
+                            Scanner repeticao = new Scanner(System.in);
                             System.out.println("Deseja repetir a operação?");
                             System.out.println("Não - 0");
                             System.out.println("Sim - 1");
-                            resposta = ler.nextInt();
+                            resposta = repeticao.nextInt();
                         }
                         while (resposta != 0 && resposta != 1);
                     }
@@ -84,17 +79,18 @@ public class Main {
                         limpaTela();
                         try {
                             System.out.printf("Digite: [codVôo]: ");
-                            int codVoo = ler.nextInt();
+                            String codVoo = ler.next();
                             listaDeAeroporto.removerVoo(codVoo);
 
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                         do{
+                            Scanner repeticao = new Scanner(System.in);
                             System.out.println("Deseja repetir a operação?");
                             System.out.println("Não - 0");
                             System.out.println("Sim - 1");
-                            resposta = ler.nextInt();
+                            resposta = repeticao.nextInt();
                         }
                         while (resposta != 0 && resposta != 1);
                     }
@@ -106,13 +102,6 @@ public class Main {
                     do{
                         limpaTela();
                         try {
-                            Aeroporto novoAeroporto = new Aeroporto("GRU", "sao paulo");
-                            listaDeAeroporto.addAeroporto(novoAeroporto);
-                            Aeroporto novoAeroporto2 = new Aeroporto("BSB", "Brasilia");
-                            listaDeAeroporto.addAeroporto(novoAeroporto2);
-                            listaDeAeroporto.addVoo("GRU", "BSB", 123);
-
-
                             System.out.printf("Digite: [codAeroporto]: ");
                             String codAeroporto = ler.next();
                             System.out.println(listaDeAeroporto.voosAeroporto(codAeroporto));
@@ -120,10 +109,11 @@ public class Main {
                             e.printStackTrace();
                         }
                         do {
+                            Scanner repeticao = new Scanner(System.in);
                             System.out.println("Deseja repetir a operação?");
                             System.out.println("Não - 0");
                             System.out.println("Sim - 1");
-                            resposta = ler.nextInt();
+                            resposta = repeticao.nextInt();
                         }
                         while (resposta != 0 && resposta != 1);
                     }
@@ -135,15 +125,6 @@ public class Main {
                     do{
                         limpaTela();
                         try {
-                            Aeroporto novoAeroporto = new Aeroporto("GRU", "sao paulo");
-                            listaDeAeroporto.addAeroporto(novoAeroporto);
-                            Aeroporto novoAeroporto2 = new Aeroporto("BSB", "Brasilia");
-                            listaDeAeroporto.addAeroporto(novoAeroporto2);
-                            listaDeAeroporto.addVoo("GRU", "BSB", 123);
-                            listaDeAeroporto.addVoo("GRU", "BSB", 127);
-                            listaDeAeroporto.addVoo("BSB", "GRU", 321);
-
-
                             System.out.println(listaDeAeroporto.todosVoosAeroportos());
                         } catch (Exception e) {
                             e.printStackTrace();

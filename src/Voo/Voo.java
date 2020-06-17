@@ -5,10 +5,10 @@ import Aeroporto.Aeroporto;
 
 
 public class Voo implements Cloneable{
-    private int codVoo;
+    private String codVoo;
     private String codAeroportoDestino;
 
-    public Voo (int codVoo, String codAeroportoDestino) throws Exception{
+    public Voo (String codVoo, String codAeroportoDestino) throws Exception{
         try {
             setCodAeroportoDestino(codAeroportoDestino);
             setCodVoo(codVoo);
@@ -25,13 +25,13 @@ public class Voo implements Cloneable{
         this.codAeroportoDestino = codAeroportoDestino;
     }
 
-    public void setCodVoo(int codVoo) throws Exception{
-        if (codVoo <= 0)
+    public void setCodVoo(String codVoo) throws Exception{
+        if (codVoo == null || codVoo.length() != 3 )
             throw new Exception("Valor de código de voo inválido.");
         this.codVoo = codVoo;
     }
 
-    public int getCodVoo() {
+    public String getCodVoo() {
         return this.codVoo;
     }
 
@@ -57,9 +57,7 @@ public class Voo implements Cloneable{
 
         Voo voo = (Voo) obj;
 
-        if(this.codVoo != voo.codVoo)
-            return false;
-        if(!this.codAeroportoDestino.equals(voo.codAeroportoDestino))
+        if(!this.codVoo.equals(voo.codVoo))
             return false;
 
         return true;
@@ -68,7 +66,7 @@ public class Voo implements Cloneable{
     @Override
     public int hashCode() {
         int ret = 23;
-        ret = ret * 7 + this.codVoo;
+        ret = ret * 7 + this.codVoo.hashCode();
         ret = ret * 7 + this.codAeroportoDestino.hashCode();
 
         if(ret < 0)
