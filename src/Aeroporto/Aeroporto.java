@@ -45,10 +45,10 @@ public class Aeroporto implements Cloneable{
         return this.cidade;
     }
 
-    public ListaDuplamenteLigadaDesordenada<Voo> getVoos(){
-        ListaDuplamenteLigadaDesordenada<Voo> lista = null;
+    public ListaDuplamenteLigadaDesordenadaSemRepeticao getVoos(){
+        ListaDuplamenteLigadaDesordenadaSemRepeticao<Voo> lista = null;
         try{
-            lista = new ListaDuplamenteLigadaDesordenada<Voo>(this.voos);
+            lista = new ListaDuplamenteLigadaDesordenadaSemRepeticao<Voo>(this.voos);
         }catch(Exception e){}
         return lista;
     }

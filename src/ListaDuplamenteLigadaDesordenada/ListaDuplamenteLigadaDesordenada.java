@@ -248,7 +248,7 @@ public class ListaDuplamenteLigadaDesordenada<X>
 
         while (atual!=null)
         {
-            if (i.equals(atual.getInfo()))
+            if (atual.getInfo().equals(i))
                 return true;
 
             atual = atual.getProx();

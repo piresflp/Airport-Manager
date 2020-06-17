@@ -62,8 +62,8 @@ public class Main {
                             System.out.printf("Digite: [codigoAeroportoEmbarque] [codAeroportoDesembarque] [codVôo]: ");
                             String codEmbarque = ler.next();
                             String codDesembarque = ler.next();
-                            int codVôo = ler.nextInt();
-                            listaDeAeroporto.addVoo(codEmbarque, codDesembarque, codVôo);
+                            int codVoo = ler.nextInt();
+                            listaDeAeroporto.addVoo(codEmbarque, codDesembarque, codVoo);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -82,10 +82,10 @@ public class Main {
                 case 3:
                     do{
                         limpaTela();
-                        System.out.println("O valor da variavel é 3");
                         try {
                             System.out.printf("Digite: [codVôo]: ");
-                            int codVôo = ler.nextInt();
+                            int codVoo = ler.nextInt();
+                            listaDeAeroporto.removerVoo(codVoo);
 
                         } catch (Exception e) {
                             e.printStackTrace();
