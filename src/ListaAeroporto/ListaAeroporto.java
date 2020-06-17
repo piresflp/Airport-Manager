@@ -50,6 +50,31 @@ public class ListaAeroporto  extends ListaDuplamenteLigadaDesordenadaSemRepetica
             aeroportoAtual = aeroportoAtual.getProx();
         }
     }
+    public String voosAeroporto(String codAeroporto){
+        No aeroportoAtual=this.primeiro;
+
+        while (aeroportoAtual!=null)
+        {
+            if (codAeroporto.equals(aeroportoAtual.getInfo().getCodigo())) {
+                return aeroportoAtual.getInfo().toString();
+            }
+            aeroportoAtual = aeroportoAtual.getProx();
+        }
+        return aeroportoAtual.getInfo().toString();
+    }
+
+    public String todosVoosAeroportos(){
+        No aeroportoAtual=this.primeiro;
+        String ret = "";
+
+        while (aeroportoAtual!=null)
+        {
+            ret += aeroportoAtual.getInfo().toString() + "\n";
+            aeroportoAtual = aeroportoAtual.getProx();
+        }
+        return ret;
+    }
+
 
     @Override
     public Object clone() {

@@ -62,9 +62,17 @@ public class Main {
                 break;
 
             case 4:
-                System.out.println ("O valor da variavel é 4");
                 try {
+                    Aeroporto novoAeroporto = new Aeroporto("GRU", "sao paulo");
+                    listaDeAeroporto.addAeroporto(novoAeroporto);
+                    Aeroporto novoAeroporto2 = new Aeroporto("BSB", "Brasilia");
+                    listaDeAeroporto.addAeroporto(novoAeroporto2);
+                    listaDeAeroporto.addVoo("GRU", "BSB", 123);
 
+
+                    System.out.printf("Digite: [codAeroporto]: ");
+                    String codAeroporto = ler.next();
+                    System.out.println(listaDeAeroporto.voosAeroporto(codAeroporto));
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -72,9 +80,17 @@ public class Main {
                 break;
 
             case 5:
-                System.out.println ("O valor da variavel é 5");
                 try {
+                    Aeroporto novoAeroporto = new Aeroporto("GRU", "sao paulo");
+                    listaDeAeroporto.addAeroporto(novoAeroporto);
+                    Aeroporto novoAeroporto2 = new Aeroporto("BSB", "Brasilia");
+                    listaDeAeroporto.addAeroporto(novoAeroporto2);
+                    listaDeAeroporto.addVoo("GRU", "BSB", 123);
+                    listaDeAeroporto.addVoo("GRU", "BSB", 127);
+                    listaDeAeroporto.addVoo("BSB", "GRU", 321);
 
+
+                    System.out.println(listaDeAeroporto.todosVoosAeroportos());
                 }
                 catch (Exception e){
                     e.printStackTrace();
